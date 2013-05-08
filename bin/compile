@@ -166,6 +166,13 @@ puts-step "Installing dependencies using Pip ($PIP_VERSION)"
 # Django collectstatic support.
 source $BIN_DIR/steps/collectstatic
 
+# Graphviz binary package
+GRAPHVIZ_BINARY="https://s3-us-west-2.amazonaws.com/mfenniak-graphviz/graphviz-2.30.tgz"
+GRAPHVIZ_VENDOR="mfenniak/graphviz"
+puts-step "Installing graphviz package"
+mkdir -p $1/$GRAPHVIZ_VENDOR
+curl $GRAPHVIZ_BINAY -o - | tar -xz -C $1/$GRAPHVIZ_VENDOR -f -
+
 # ### Finalize
 #
 

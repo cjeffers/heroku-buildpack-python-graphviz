@@ -167,8 +167,8 @@ puts-step "Installing dependencies using Pip ($PIP_VERSION)"
 source $BIN_DIR/steps/collectstatic
 
 # Graphviz binary package
-GRAPHVIZ_BINARY="https://s3-us-west-2.amazonaws.com/mfenniak-graphviz/graphviz-2.30.tgz"
-GRAPHVIZ_VENDOR="mfenniak/graphviz"
+GRAPHVIZ_BINARY="https://s3-us-west-1.amazonaws.com/cjeffers-graphviz/graphviz-2.26.3-heroku.tar.gz"
+GRAPHVIZ_VENDOR="cjeffers/graphviz"
 puts-step "Installing graphviz package"
 mkdir -p $1/$GRAPHVIZ_VENDOR
 curl $GRAPHVIZ_BINARY -o - | tar -xz -C $1/$GRAPHVIZ_VENDOR -f -
@@ -177,11 +177,11 @@ curl $GRAPHVIZ_BINARY -o - | tar -xz -C $1/$GRAPHVIZ_VENDOR -f -
 #
 
 # Set context environment variables.
-set-env PATH '$HOME/.heroku/python/bin:$HOME/mfenniak/graphviz/bin:$PATH'
+set-env PATH '$HOME/.heroku/python/bin:$HOME/cjeffers/graphviz/bin:$PATH'
 set-env PYTHONUNBUFFERED true
 set-env PYTHONHOME /app/.heroku/python
-set-default-env LIBRARY_PATH /app/.heroku/vendor/lib:/app/mfenniak/graphviz/lib
-set-default-env LD_LIBRARY_PATH /app/.heroku/vendor/lib:/app/mfenniak/graphviz/lib
+set-default-env LIBRARY_PATH /app/.heroku/vendor/lib
+set-default-env LD_LIBRARY_PATH /app/.heroku/vendor/lib
 set-default-env LANG en_US.UTF-8
 set-default-env PYTHONHASHSEED random
 set-default-env PYTHONPATH /app/
